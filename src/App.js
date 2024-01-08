@@ -1,9 +1,11 @@
+// App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Dashboard from './components/Dashboard';
 import Stock from './components/Stock';
+import Main from './components/Main';
 
 function App() {
   return (
@@ -18,16 +20,19 @@ function App() {
             <li>
               <Link to="/about">About</Link>
             </li>
+            <li>
+              <Link to="/stocks">Dashboard</Link>
+            </li>
           </ul>
         </nav>
 
         {/* Routes */}
-        <Switch>
-          <Route path="/about" component={About} />
-          <Route path="/stocks/:symbol" component={Stock} />
-          <Route path="/stocks" component={Dashboard} />
-          <Route path="/" component={Home} />
-        </Switch>
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/stocks/:symbol" element={<Stock />} />
+          <Route path="/stocks" element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </div>
     </Router>
   );
